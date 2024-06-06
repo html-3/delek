@@ -5,7 +5,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { LuCopyPlus, LuLogOut, LuPlusSquare, LuUserCircle2 } from 'react-icons/lu';
+import { LuCopyPlus, LuLogOut, LuPlusSquare, LuSquareStack, LuSquirrel, LuUserCircle2 } from 'react-icons/lu';
 
 export default function HomePage() {
   const [decks, setDecks] = useState<Deck[]>([]);
@@ -33,7 +33,11 @@ export default function HomePage() {
 
   return (
     <>
-      <h1>Delek</h1>
+      <div className='flex items-end space-x-3'>
+        <LuSquirrel className='h-10 w-10 hover:animate-bounce' />
+        <h1>Delek</h1>
+      </div>
+
       <div className='grid grid-cols-3 gap-2 h-full'>
         {decks.map((deck, index) => {
           return (
@@ -53,11 +57,14 @@ export default function HomePage() {
         <button onClick={() => auth.signOut()}>
           <LuLogOut className='w-8 h-8 hover:text-slate-500 transition-colors' />
         </button>
-        <button onClick={() => router.push('/create/card')}>
+        <button onClick={() => router.push('/cards/create')}>
           <LuPlusSquare className='w-8 h-8 hover:text-slate-500 transition-colors' />
         </button>
-        <button onClick={() => router.push('/create/deck')}>
+        <button onClick={() => router.push('/decks/create')}>
           <LuCopyPlus className='w-8 h-8 hover:text-slate-500 transition-colors' />
+        </button>
+        <button onClick={() => router.push('/cards')}>
+          <LuSquareStack className='w-8 h-8 hover:text-slate-500 transition-colors' />
         </button>
         <button onClick={() => router.push('/profile')}>
           <LuUserCircle2 className='w-8 h-8 hover:text-slate-500 transition-colors' />
