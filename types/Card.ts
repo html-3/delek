@@ -12,4 +12,6 @@ export type Card = {
   easeFactor: number;   // e.g., 2.5
   repetitions: number;  // Number of times reviewed
   lapses: number;       // Number of times failed
+  selected:boolean;
+  deckCardId:string;
 };
