@@ -74,8 +74,9 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
 
         batch.update(doc(db, 'cards', result.cardId), {
           lapses: card.lapses + (result.lapse ? 1 : 0),
+          repetitions: card.repetitions + 1,
           updatedAt: serverTimestamp(),
-        });
+        } as Card);
       });
 
       batch.commit();
