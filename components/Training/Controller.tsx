@@ -34,6 +34,7 @@ export default class Controller extends Component<Props> {
         <Start
           nextStep={this.nextStep}
           deck={this.props.deck}
+          deckLength={this.props.cards.length}
         />
       );
     } else if (this.props.step >= 0 && this.props.step < this.props.cards.length) {

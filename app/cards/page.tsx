@@ -40,6 +40,7 @@ export default function GeneralCardPage() {
   return (
     <div className='flex flex-col items-center space-y-3'>
       <h1>Cards</h1>
+      <span>Total Cards: {cards.length}</span>
       <ul className='w-full'>
         {cards.map((card) => (
           <li
