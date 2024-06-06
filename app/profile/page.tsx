@@ -25,6 +25,7 @@ export default function ProfilePage() {
       <div className='flex flex-col items-center space-y-4'>
         <h1>Profile</h1>
         <Image
+          priority
           className='rounded-full'
           alt='User profile image'
           src={currentUser?.photoURL || ''}
