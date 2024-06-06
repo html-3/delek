@@ -26,9 +26,7 @@ export default async function RootLayout({ children }: Props) {
         <DarkModeProvider>
           <SessionProvider>
             <ToastProvider>
-              <main className='flex min-h-[90vh] flex-col items-center justify-between p-12'>
-                {children}
-              </main>
+              <main className='flex flex-col items-center justify-between m-10'>{children}</main>
             </ToastProvider>
           </SessionProvider>
         </DarkModeProvider>
