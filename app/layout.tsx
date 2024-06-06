@@ -13,6 +13,10 @@ const varela_round = Varela_Round({
 export const metadata = {
   title: 'Delek',
   description: 'A simple German learning app',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/icon.png',
+  },
 };
 
 type Props = { children: React.ReactNode };
@@ -26,7 +30,7 @@ export default async function RootLayout({ children }: Props) {
         <DarkModeProvider>
           <SessionProvider>
             <ToastProvider>
-              <main className='flex flex-col items-center justify-between m-10'>{children}</main>
+              <main className='flex flex-col items-center justify-between m-10 gap-4'>{children}</main>
             </ToastProvider>
           </SessionProvider>
         </DarkModeProvider>
