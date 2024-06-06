@@ -1,5 +1,6 @@
 'use client';
 import Controller from '@/components/Training/Controller';
+import getRandomCardIds from '@/functions/getRandomCardIds';
 import { Card } from '@/types/Card';
 import { Deck } from '@/types/Deck';
 import { DeckCardRel } from '@/types/DeckCardRel';
@@ -44,10 +45,11 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
 
         const deckCardRelSnap = await getDocs(deckCardRelQuery);
 
-        const cardIdList = deckCardRelSnap.docs.map((doc) => {
+        let cardIdList = deckCardRelSnap.docs.map((doc) => {
           const deckCardRel = doc.data() as DeckCardRel;
           return deckCardRel.cardId;
         });
+        cardIdList = getRandomCardIds({ cardIdList });
 
         const cardQuery = query(collection(db, 'cards'), where(documentId(), 'in', cardIdList));
         const cardsSnap = await getDocs(cardQuery);
