@@ -10,7 +10,7 @@ export default function LoginPage() {
     <>
       <h1>Login</h1>
       <button
-        className='font-bold bg-amber-500 hover:bg-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex space-x-2 items-center'
+        className='mt-10 font-bold bg-amber-500 hover:bg-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex space-x-2 items-center'
         onClick={() =>
           signInWithPopup(auth, provider)
             .then((result) => {
@@ -21,7 +21,7 @@ export default function LoginPage() {
             })
         }>
         <LuLogIn className='w-7 h-7 hover:text-slate-500 transition-colors' />
-        <p>Login</p>
+        <p>Login with Google</p>
       </button>
     </>
   );

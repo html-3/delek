@@ -17,7 +17,11 @@ export default function Stop({ handleSubmit, results }: Props) {
       <p>
         {totalCards - totalLapses} / {totalCards}
       </p>
-      <button onClick={handleSubmit}>Continue</button>
+      <button
+        className='font-bold bg-amber-500 hover:bg-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
+        onClick={handleSubmit}>
+        Continue
+      </button>
     </>
   );
 }
