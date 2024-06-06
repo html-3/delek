@@ -3,7 +3,6 @@ import { auth } from '@/utils/firebase';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { LuCornerDownLeft } from 'react-icons/lu';
 
 export default function ProfilePage() {
   const { theme, setTheme } = useTheme();
@@ -40,8 +39,10 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-      <button onClick={() => router.back()}>
-        <LuCornerDownLeft className='w-8 h-8 hover:text-slate-500 transition-colors' />
+      <button
+        className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
+        onClick={() => router.back()}>
+        Back
       </button>
     </>
   );

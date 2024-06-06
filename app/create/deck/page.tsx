@@ -15,18 +15,12 @@ import {
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { LuCornerDownLeft } from 'react-icons/lu';
 
 type Card = {
   id: string;
   back: string;
   front: string;
   selected: boolean;
-};
-
-type CardSelection = {
-  cardId: string;
-  e: { target: { name: any; value: any } };
 };
 
 export default function CreateDeckPage() {
@@ -74,7 +68,7 @@ export default function CreateDeckPage() {
       });
       batch.commit();
 
-      setDeck({} as Deck);
+      setDeck({ title: '', description: '' } as Deck);
     } catch (error) {
       console.log(error);
     }
@@ -89,9 +83,9 @@ export default function CreateDeckPage() {
   };
 
   return (
-    <>
+    <div className='flex flex-col items-center space-y-3'>
       <h1>Create deck</h1>
-      <form className='space-y-3 min-w-96'>
+      <form className='space-y-3 min-w-80 max-w-[0.95vh] w-full'>
         <div className='col-span-full flex flex-col'>
           <label htmlFor='title'>Title</label>
           <input
@@ -128,7 +122,7 @@ export default function CreateDeckPage() {
                     <span>
                       <input
                         className='h-4 w-4'
-                        value={`${card.selected}`}
+                        checked={card.selected}
                         type='checkbox'
                         onChange={(e) => toggleSelection(card.id)}
                       />
@@ -147,12 +141,12 @@ export default function CreateDeckPage() {
       </form>
 
       <button
-        className='font-bold bg-amber-500 hover:bg-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
+        className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
         onClick={() => {
           router.back();
         }}>
-        <LuCornerDownLeft className='w-8 h-8 hover:text-slate-500 transition-colors' />
+        Back
       </button>
-    </>
+    </div>
   );
 }

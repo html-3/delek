@@ -33,7 +33,7 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
 
       const deckSnap = await getDoc(deckQuery);
       if (deckSnap.exists()) {
-        const deckData = deckSnap.data() as Deck;
+        const deckData = { ...(deckSnap.data() as Deck), id: deckSnap.id };
 
         setDeck(deckData);
         const deckCardRelQuery = query(
@@ -63,7 +63,7 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
     };
     getAssets();
   }, []);
-  console.log(cards);
+
   const handleSubmit = () => {
     try {
       const batch = writeBatch(db);
@@ -95,8 +95,10 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
         cards={cards!}
         deck={deck!}
       />
-      <button onClick={() => router.push('/')}>
-        <LuCornerDownLeft className='w-8 h-8 hover:text-slate-500 transition-colors' />
+      <button
+        className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
+        onClick={() => router.back()}>
+        Back
       </button>
     </>
   );

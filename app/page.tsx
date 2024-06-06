@@ -38,7 +38,7 @@ export default function HomePage() {
         {decks.map((deck, index) => {
           return (
             <button
-              className='py-4 px-6 min-w-40 rounded-lg border-slate-500 border-2 hover:bg-slate-500 transition-colors'
+              className='py-4 px-6 min-w-40 rounded-lg border-amber-500 border-2 hover:text-amber-400 hover:border-amber-400 transition-colors'
               key={index}
               onClick={() => router.push(`/training/${deck.id}`)}>
               <div className='text-center'>

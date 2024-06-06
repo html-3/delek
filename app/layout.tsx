@@ -21,14 +21,12 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html
       lang='en'
-      className={varela_round.className}>
+      className={`${varela_round.className} min-h-screen`}>
       <body>
         <DarkModeProvider>
           <SessionProvider>
             <ToastProvider>
-            <main className='flex min-h-screen flex-col items-center justify-between p-12'>
-              {children}
-            </main>
+              <main className='flex min-h-[90vh] flex-col items-center justify-between p-12'>
                 {children}
               </main>
             </ToastProvider>

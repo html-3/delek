@@ -2,11 +2,10 @@
 
 import { Card } from '@/types/Card';
 import { auth, db } from '@/utils/firebase';
-import { collection, doc, query, serverTimestamp, setDoc } from 'firebase/firestore';
+import { collection, doc, serverTimestamp, setDoc } from 'firebase/firestore';
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { LuCornerDownLeft } from 'react-icons/lu';
 
 export default function CreateCardPage() {
   const [card, setCard] = useState({} as Card);
@@ -28,13 +27,13 @@ export default function CreateCardPage() {
       repetitions: 0,
       description: '',
     });
-    setCard({} as Card);
+    setCard({ front: '', back: '' } as Card);
   };
 
   return (
-    <>
+    <div className='flex flex-col items-center space-y-3'>
       <h1>Create card</h1>
-      <form className='space-y-3'>
+      <form className='space-y-3 min-w-80 max-w-[0.95vh] w-full'>
         <div className='col-span-full flex flex-col'>
           <label htmlFor='front'>Front-side</label>
           <input
@@ -62,12 +61,12 @@ export default function CreateCardPage() {
         </button>
       </form>
       <button
-        className='font-bold bg-amber-500 hover:bg-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
+        className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
         onClick={() => {
           router.back();
         }}>
-        <LuCornerDownLeft className='w-8 h-8 hover:text-slate-500 transition-colors' />
+        Back
       </button>
-    </>
+    </div>
   );
 }
