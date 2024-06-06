@@ -3,6 +3,7 @@ import { auth } from '@/utils/firebase';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function ProfilePage() {
   const { theme, setTheme } = useTheme();
@@ -10,10 +11,15 @@ export default function ProfilePage() {
   const currentUser = auth.currentUser;
 
   const themeHandler = () => {
-    if (theme == 'light') setTheme('dark');
-    else setTheme('light');
+    try {
+      if (theme == 'light') setTheme('dark');
+      else setTheme('light');
+      toast.success('Theme changed successfully!');
+    } catch (error) {
+      toast.error(`${error}`);
+    }
   };
-  console.log(`${theme == 'dark'}`);
+
   return (
     <>
       <div className='flex flex-col items-center space-y-4'>

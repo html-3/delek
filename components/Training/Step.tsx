@@ -11,7 +11,7 @@ type Props = {
 
 export default function Step({ step, nextStep, cards, handleChange }: Props) {
   const card = cards[step];
-  console.log('card', card, step, card.id);
+
   return (
     <>
       <FlipCard

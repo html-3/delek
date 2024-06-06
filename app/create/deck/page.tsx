@@ -15,6 +15,7 @@ import {
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 type Card = {
   id: string;
@@ -69,8 +70,9 @@ export default function CreateDeckPage() {
       batch.commit();
 
       setDeck({ title: '', description: '' } as Deck);
+      toast.success('Deck created successfully!');
     } catch (error) {
-      console.log(error);
+      toast.error(`${error}`);
     }
   };
 

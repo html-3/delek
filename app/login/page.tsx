@@ -1,6 +1,7 @@
 'use client';
 import { auth } from '@/utils/firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import toast from 'react-hot-toast';
 import { LuLogIn } from 'react-icons/lu';
 
 export default function LoginPage() {
@@ -13,10 +14,10 @@ export default function LoginPage() {
         onClick={() =>
           signInWithPopup(auth, provider)
             .then((result) => {
-              console.log('Logged In', result);
+              toast.success('Logged In!');
             })
             .catch((error) => {
-              console.log('Caught error Popup closed');
+              toast.error('Caught error Popup closed');
             })
         }>
         <LuLogIn className='w-7 h-7 hover:text-slate-500 transition-colors' />

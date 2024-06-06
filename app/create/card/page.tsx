@@ -6,6 +6,7 @@ import { collection, doc, serverTimestamp, setDoc } from 'firebase/firestore';
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function CreateCardPage() {
   const [card, setCard] = useState({} as Card);
@@ -16,18 +17,23 @@ export default function CreateCardPage() {
   };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    const newCard = doc(collection(db, 'cards'));
-    await setDoc(newCard, {
-      ...card,
-      ownerId: auth.currentUser?.uid,
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp(),
-      lapses: 0,
-      repetitions: 0,
-      description: '',
-    });
-    setCard({ front: '', back: '' } as Card);
+    try {
+      e.preventDefault();
+      const newCard = doc(collection(db, 'cards'));
+      await setDoc(newCard, {
+        ...card,
+        ownerId: auth.currentUser?.uid,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+        lapses: 0,
+        repetitions: 0,
+        description: '',
+      });
+      setCard({ front: '', back: '' } as Card);
+      toast.success('Card created successfully!');
+    } catch (error) {
+      toast.error(`${error}`);
+    }
   };
 
   return (

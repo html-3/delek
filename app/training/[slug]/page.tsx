@@ -18,6 +18,7 @@ import {
 } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { LuCornerDownLeft } from 'react-icons/lu';
 
 export default function TrainingPage({ params }: { params: { slug: string } }) {
@@ -58,7 +59,7 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
         );
       } else {
         // doc.data() will be undefined in this case
-        console.log('No such document!');
+        toast.error('No such document!');
       }
     };
     getAssets();
@@ -70,7 +71,7 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
 
       results.map((result) => {
         const card = cards.find((card) => card.id == result.cardId)!;
-        console.log('card', card, result.cardId);
+
         batch.update(doc(db, 'cards', result.cardId), {
           lapses: card.lapses + (result.lapse ? 1 : 0),
           updatedAt: serverTimestamp(),
@@ -80,7 +81,7 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
       batch.commit();
       router.push('/');
     } catch (error) {
-      console.log(error);
+      toast.error(`${error}`);
     }
   };
 
