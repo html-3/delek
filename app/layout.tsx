@@ -2,8 +2,8 @@ import '../public/globals.css';
 import SessionProvider from '@/components/SessionProvider';
 import ToastProvider from '@/components/ToastProvider';
 import { Varela_Round } from 'next/font/google';
-import { ThemeProvider } from 'next-themes';
 import { Metadata, Viewport } from 'next';
+import DarkModeProvider from '@/components/DarkModeProvider';
 
 const varela_round = Varela_Round({
   weight: '400',
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: Props) {
       lang='en'
       className={`${varela_round.className} min-h-screen`}>
       <body>
-        <ThemeProvider>
+        <DarkModeProvider>
           <SessionProvider>
             <ToastProvider>
               <main className='flex flex-col items-center justify-between m-10 gap-4'>
@@ -43,7 +43,7 @@ export default async function RootLayout({ children }: Props) {
               </main>
             </ToastProvider>
           </SessionProvider>
-        </ThemeProvider>
+        </DarkModeProvider>
       </body>
     </html>
   );

@@ -9,25 +9,37 @@ export default function Navbar() {
   const { theme } = useTheme();
 
   return (
-    <div
-      className={`fixed bottom-0 bg-inherit z-10 flex justify-around w-full py-5 px-10 ${
-        theme == 'dark' ? 'bg-black' : 'bg-white'
-      }`}>
-      <button onClick={() => auth.signOut()}>
-        <LuLogOut className='w-8 h-8 hover:text-slate-500 transition-colors' />
+    <nav className='fixed bottom-0 left-0 w-full bg-white dark:bg-stone-900 shadow-lg flex justify-around py-5 px-10'>
+      <button
+        onClick={auth.signOut}
+        className='nav-btn'>
+        <LuLogOut className='w-8 h-8 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors' />
+        <span className='hidden md:inline-block ml-1'>Logout</span>
       </button>
-      <button onClick={() => router.push('/cards/create')}>
-        <LuPlusSquare className='w-8 h-8 hover:text-slate-500 transition-colors' />
+      <button
+        onClick={() => router.push('/cards/create')}
+        className='nav-btn'>
+        <LuPlusSquare className='w-8 h-8 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors' />
+        <span className='hidden md:inline-block ml-1'>Create Card</span>
       </button>
-      <button onClick={() => router.push('/decks/create')}>
-        <LuCopyPlus className='w-8 h-8 hover:text-slate-500 transition-colors' />
+      <button
+        onClick={() => router.push('/decks/create')}
+        className='nav-btn'>
+        <LuCopyPlus className='w-8 h-8 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors' />
+        <span className='hidden md:inline-block ml-1'>Create Deck</span>
       </button>
-      <button onClick={() => router.push('/cards')}>
-        <LuSquareStack className='w-8 h-8 hover:text-slate-500 transition-colors' />
+      <button
+        onClick={() => router.push('/cards')}
+        className='nav-btn'>
+        <LuSquareStack className='w-8 h-8 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors' />
+        <span className='hidden md:inline-block ml-1'>All Cards</span>
       </button>
-      <button onClick={() => router.push('/profile')}>
-        <LuUserCircle2 className='w-8 h-8 hover:text-slate-500 transition-colors' />
+      <button
+        onClick={() => router.push('/profile')}
+        className='nav-btn'>
+        <LuUserCircle2 className='w-8 h-8 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors' />
+        <span className='hidden md:inline-block ml-1'>Profile</span>
       </button>
-    </div>
+    </nav>
   );
 }

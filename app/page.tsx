@@ -1,16 +1,14 @@
 'use client';
-import Navbar from '@/components/Navbar';
-import { Deck } from '@/types/Deck';
-import { auth, db } from '@/utils/firebase';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { auth, db } from '@/utils/firebase';
+import Navbar from '@/components/Navbar';
+import DeckCard from '@/components/DeckCard';
+import { Deck } from '@/types/Deck';
 import { LuSquirrel } from 'react-icons/lu';
 
 export default function HomePage() {
   const [decks, setDecks] = useState<Deck[]>([]);
-  const router = useRouter();
   const currentUser = auth.currentUser;
 
   useEffect(() => {
@@ -26,33 +24,30 @@ export default function HomePage() {
         });
 
         setDecks(decksArray);
-      } catch (error) {}
+      } catch (error) {
+        console.error('Error fetching decks: ', error);
+      }
     };
     getDecks();
   }, []);
 
   return (
     <>
-      <div className='flex items-end space-x-3'>
-        <LuSquirrel className='h-10 w-10 hover:animate-bounce' />
-        <h1>Delek</h1>
-      </div>
+      <header className='flex items-end space-x-3 mt-5 px-4'>
+        <LuSquirrel className='h-10 w-10 text-amber-500 dark:text-amber-400 hover:animate-jump' />
+        <h1 className='text-4xl font-bold text-stone-900 dark:text-stone-100'>Delek</h1>
+      </header>
 
-      <div className='grid grid-cols-1 xs:grid-cols-2 sm:xs:grid-cols-3 gap-2 mt-5 mb-20'>
-        {decks.map((deck, index) => {
-          return (
-            <button
-              className='py-4 px-6 min-w-40 rounded-lg border-amber-500 border-2 hover:text-amber-400 hover:border-amber-400 transition-colors'
-              key={index}
-              onClick={() => router.push(`/training/${deck.id}`)}>
-              <div className='text-center'>
-                <h2>{deck.title}</h2>
-                <p>{deck.description}</p>
-              </div>
-            </button>
-          );
-        })}
-      </div>
+      <main className='px-4 mt-8 mb-20'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+          {decks.map((deck) => (
+            <DeckCard
+              key={deck.id}
+              deck={deck}
+            />
+          ))}
+        </div>
+      </main>
 
       <Navbar />
     </>
