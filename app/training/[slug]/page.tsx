@@ -93,7 +93,7 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
       <div className='flex items-center w-full gap-3'>
         <button
           className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
-          onClick={() => router.push(`/update/deck/${deck.id}`)}>
+          onClick={() => router.push(`/decks/update/${deck.id}`)}>
           Edit deck
         </button>
         <button
