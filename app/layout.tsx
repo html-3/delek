@@ -3,6 +3,7 @@ import SessionProvider from '@/components/SessionProvider';
 import ToastProvider from '@/components/ToastProvider';
 import { Varela_Round } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
+import { Metadata, Viewport } from 'next';
 
 const varela_round = Varela_Round({
   weight: '400',
@@ -10,13 +11,19 @@ const varela_round = Varela_Round({
   display: 'swap',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Delek',
   description: 'A simple German learning app',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/icon.png',
   },
+  manifest: 'manifest.json',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#F59E0B',
+  colorScheme: 'normal',
 };
 
 type Props = { children: React.ReactNode };
