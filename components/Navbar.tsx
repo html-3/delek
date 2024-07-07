@@ -1,7 +1,14 @@
 'use client';
 import { auth } from '@/utils/firebase';
 import { useRouter } from 'next/navigation';
-import { LuCopyPlus, LuLogOut, LuPlusSquare, LuSquareStack, LuUserCircle2 } from 'react-icons/lu';
+import {
+  LuCopyPlus,
+  LuLogOut,
+  LuPlusSquare,
+  LuSquareStack,
+  LuUserCircle2,
+  LuDices,
+} from 'react-icons/lu';
 
 export default function Navbar() {
   const router = useRouter();
@@ -10,6 +17,7 @@ export default function Navbar() {
     { onClick: auth.signOut, name: 'Logout', icon: LuLogOut },
     { onClick: () => router.push('/cards/create'), name: 'Create card', icon: LuPlusSquare },
     { onClick: () => router.push('/decks/create'), name: 'Create Deck', icon: LuCopyPlus },
+    { onClick: () => router.push('/training/random'), name: 'Random Training', icon: LuDices },
     { onClick: () => router.push('/cards'), name: 'All Cards', icon: LuSquareStack },
     { onClick: () => router.push('/profile'), name: 'Profile', icon: LuUserCircle2 },
   ];
