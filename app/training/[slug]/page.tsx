@@ -90,6 +90,15 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
+      <Controller
+        setStep={setStep}
+        step={step}
+        setResults={setResults}
+        handleSubmit={handleSubmit}
+        results={results}
+        cards={cards!}
+        deck={deck!}
+      />
       <div className='flex items-center w-full gap-3'>
         <button
           className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
@@ -102,15 +111,6 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
           Back
         </button>
       </div>
-      <Controller
-        setStep={setStep}
-        step={step}
-        setResults={setResults}
-        handleSubmit={handleSubmit}
-        results={results}
-        cards={cards!}
-        deck={deck!}
-      />
     </>
   );
 }
