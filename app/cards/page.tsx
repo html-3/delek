@@ -43,11 +43,11 @@ export default function GeneralCardPage() {
       <span className='text-lg font-medium text-stone-700 dark:text-stone-300'>
         Total Cards: {cards.length}
       </span>
-      <ul className='w-full divide-y divide-stone-200 dark:divide-stone-700'>
+      <ul className='w-full divide-y divide-stone-200 dark:divide-stone-700 md:grid-cols-2 grid'>
         {cards.map((card) => (
           <li
             key={card.id}
-            className='py-4'>
+            className='py-4 pr-3'>
             <div className='flex justify-between items-center w-full gap-6'>
               <div className='flex gap-6'>
                 <span className='text-base font-bold text-stone-800 dark:text-stone-200'>
