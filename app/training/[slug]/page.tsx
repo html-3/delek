@@ -18,9 +18,9 @@ import {
   writeBatch,
 } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { LuCornerDownLeft } from 'react-icons/lu';
 
 export default function TrainingPage({ params }: { params: { slug: string } }) {
   const [step, setStep] = useState(-1);
@@ -101,12 +101,12 @@ export default function TrainingPage({ params }: { params: { slug: string } }) {
       />
       <div className='flex items-center w-full gap-3'>
         <button
-          className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
+          className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex select-none'
           onClick={() => router.push(`/decks/update/${deck.id}`)}>
           Edit deck
         </button>
         <button
-          className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex'
+          className='font-bold border-2 text-amber-500 hover:text-amber-400 border-amber-500 hover:border-amber-400 transition rounded-lg w-full justify-center py-3 px-5 flex select-nonel'
           onClick={() => router.back()}>
           Back
         </button>
